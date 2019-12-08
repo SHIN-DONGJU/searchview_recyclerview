@@ -12,6 +12,10 @@ public class NextPage2 extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.next_page2);
+
         Log.d(TAG, "onCreate: called");
+
     }
 }

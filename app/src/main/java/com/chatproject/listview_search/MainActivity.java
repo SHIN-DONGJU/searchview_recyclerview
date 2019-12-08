@@ -10,6 +10,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.RatingBar;
+import android.widget.Toast;
+
 import androidx.appcompat.widget.SearchView;
 
 import java.util.ArrayList;
@@ -19,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
     private static final String TAG = "MainActivity";
     private ExampleAdapter adapter;
     private List<ExampleItem> exampleList;
+    RatingBar ratingBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +30,20 @@ public class MainActivity extends AppCompatActivity implements ExampleAdapter.On
         setContentView(R.layout.activity_main);
         fillExampleList();
         setUpRecyclerView();
+
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar);
+
     }
 
     private void fillExampleList() {
         exampleList = new ArrayList<>();
 
-        exampleList.add(new ExampleItem(R.drawable.ic_android, "김수미의 김치찌개", "소요시간 : 20분"));
-        exampleList.add(new ExampleItem(R.drawable.ic_launcher_background, "마카나이 덮밥", "소요시간 : 10분"));
-        exampleList.add(new ExampleItem(R.drawable.ic_launcher_foreground, "돈부리부리", "소요시간 : 15분"));
-        exampleList.add(new ExampleItem(R.drawable.ic_android, "소고기 김밥", "소요시간 : 18분"));
-        exampleList.add(new ExampleItem(R.drawable.ic_launcher_background, "어쩌구 저쩌구", "소요시간 : 5분"));
-        exampleList.add(new ExampleItem(R.drawable.ic_launcher_foreground, "계란후라이", "소요시간 : 1분"));
+        exampleList.add(new ExampleItem(R.drawable.ramen, "쿠지라이식 라면", "소요시간 : 20분",3));
+        exampleList.add(new ExampleItem(R.drawable.soup, "차돌 된장찌개", "소요시간 : 25분",4));
+        exampleList.add(new ExampleItem(R.drawable.rice, "돈부리부리", "소요시간 : 20분", 5));
+        exampleList.add(new ExampleItem(R.drawable.ic_android, "소고기 김밥", "소요시간 : 18분", 3));
+        exampleList.add(new ExampleItem(R.drawable.ic_launcher_background, "알리오 올리오", "소요시간 : 15분", 4));
+        exampleList.add(new ExampleItem(R.drawable.ic_launcher_foreground, "소고기 야채 비빔밥", "소요시간 : 30분", 5));
     }
 
     private void setUpRecyclerView() {

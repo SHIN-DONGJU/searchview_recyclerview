@@ -11,10 +11,10 @@
         android:layout_margin="4dp">
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:padding="2dp"
-            android:id="@+id/imageView" />
+            android:padding="2dp" />
 
         <TextView
             android:id="@+id/textView"
@@ -39,6 +39,15 @@
             android:layout_toEndOf="@+id/imageView"
             android:text="Line 2"
             android:textSize="15sp" />
+
+        <RatingBar
+            android:id="@+id/ratingBar"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:numStars="5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginStart="200dp"/>
 
     </RelativeLayout>
 

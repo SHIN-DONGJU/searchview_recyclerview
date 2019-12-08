@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         ImageView mImageView;
         TextView mTextView1;
         TextView mTextView2;
+        RatingBar ratingBar;
         OnCookListener onCookListener;
 
         ExampleViewHolder(@NonNull View itemView, OnCookListener onCookListener) {
@@ -31,6 +33,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
             mImageView = itemView.findViewById(R.id.imageView);
             mTextView1 = itemView.findViewById(R.id.textView);
             mTextView2 = itemView.findViewById(R.id.textView2);
+            ratingBar = itemView. findViewById(R.id.ratingBar);
 
             this.onCookListener = onCookListener;
 
@@ -68,6 +71,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         holder.mImageView.setImageResource(currentItem.getImageResource());
         holder.mTextView1.setText(currentItem.getText1());
         holder.mTextView2.setText(currentItem.getText2());
+        holder.ratingBar.setRating(currentItem.getRate());
     }
 
     @Override
