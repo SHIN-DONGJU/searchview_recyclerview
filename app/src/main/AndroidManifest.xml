@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".NextPage" />
+        <activity android:name=".NextPage2" />
+        <activity android:name=".NextPage3" />
+        <activity android:name=".NextPage4" />
+        <activity android:name=".NextPage5" />
     </application>
 
 </manifest>

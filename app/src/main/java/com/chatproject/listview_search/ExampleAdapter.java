@@ -18,29 +18,46 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     private List<ExampleItem> exampleList;
     private List<ExampleItem> exampleListFull;
 
-    class  ExampleViewHolder extends  RecyclerView.ViewHolder {
+    private OnCookListener mOnCookListener;
+
+    class  ExampleViewHolder extends  RecyclerView.ViewHolder implements  View.OnClickListener {
         ImageView mImageView;
         TextView mTextView1;
         TextView mTextView2;
+        OnCookListener onCookListener;
 
-        ExampleViewHolder(@NonNull View itemView) {
+        ExampleViewHolder(@NonNull View itemView, OnCookListener onCookListener) {
             super(itemView);
             mImageView = itemView.findViewById(R.id.imageView);
             mTextView1 = itemView.findViewById(R.id.textView);
             mTextView2 = itemView.findViewById(R.id.textView2);
+
+            this.onCookListener = onCookListener;
+
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            onCookListener.onCookClick(getAdapterPosition());
         }
     }
 
-    ExampleAdapter(List<ExampleItem> exampleList) {
+    public interface OnCookListener{
+        void onCookClick(int position);
+    }
+
+    ExampleAdapter(List<ExampleItem> exampleList, OnCookListener onCookListener) {
         this.exampleList = exampleList;
         exampleListFull = new ArrayList<>(exampleList);
+        this.mOnCookListener = onCookListener;
     }
 
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.example_item, parent, false);
-        ExampleViewHolder evh = new ExampleViewHolder(v);
+        ExampleViewHolder evh = new ExampleViewHolder(v, mOnCookListener);
         return evh;
     }
 
@@ -51,7 +68,6 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         holder.mImageView.setImageResource(currentItem.getImageResource());
         holder.mTextView1.setText(currentItem.getText1());
         holder.mTextView2.setText(currentItem.getText2());
-
     }
 
     @Override

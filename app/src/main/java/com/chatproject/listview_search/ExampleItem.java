@@ -11,6 +11,10 @@ public class ExampleItem {
         mText2 = text2;
     }
 
+    public void nextPage(String text) {
+        mText1 = text;
+    }
+
     public int getImageResource() {
         return  mImageResource;
     }
